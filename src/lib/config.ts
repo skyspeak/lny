@@ -10,13 +10,13 @@ export const eventConfig = {
   tagline: "奔腾万里 • 马到成功 • 万马奔腾\nGalloping into Prosperity • Success Arrives with the Horse",
 
   // Date & time
-  date: "Saturday, January 29, 2026",
-  time: "6:00 PM – 10:00 PM",
+  date: "Saturday, February 21, 2026",
+  time: "2:30 PM – 8:00 PM",
 
   // Location
-  venueName: "Golden Dragon Pavilion",
-  address: "888 Fortune Way, San Francisco, CA 94102",
-  mapUrl: "https://maps.google.com/?q=888+Fortune+Way+San+Francisco+CA+94102",
+  venueName: "1768 Monticello Rd",
+  address: "1768 Monticello Rd, San Mateo, CA",
+  mapUrl: "https://maps.google.com/?q=1768+Monticello+Rd+San+Mateo+CA",
 
   // Theme description
   themeDescription:
