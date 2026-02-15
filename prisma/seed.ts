@@ -1,7 +1,8 @@
 import { PrismaClient } from "../src/generated/prisma/client";
 
-// Prisma 7 reads configuration from prisma.config.ts automatically
-const prisma = new PrismaClient({});
+// Prisma 7 reads configuration from prisma.config.ts automatically.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const prisma = new PrismaClient({} as any);
 
 async function main() {
   console.log("🌱 Seeding database with sample invitees...");

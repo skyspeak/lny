@@ -20,30 +20,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check if guest already exists (case-insensitive)
+    // Check if guest already exists
     const existing = await prisma.invitee.findFirst({
-      where: { 
-        name: {
-          equals: name.trim(),
-          mode: 'insensitive',
-        },
-      },
+      where: { name: name.trim() },
     });
-
-    // Validate kids count against max if it exists in database
-    if (existing?.maxKidsCount !== null && existing?.maxKidsCount !== undefined) {
-      if (kidsCount > existing.maxKidsCount) {
-        return NextResponse.json(
-          { error: `Maximum ${existing.maxKidsCount} kids allowed for this invitation` },
-          { status: 400 }
-        );
-      }
-    }
 
     let invitee;
 
     if (existing) {
-      // Update existing guest - preserve maxKidsCount
       invitee = await prisma.invitee.update({
         where: { id: existing.id },
         data: {
@@ -55,7 +39,6 @@ export async function POST(request: NextRequest) {
         },
       });
     } else {
-      // Create new guest without maxKidsCount (will be null)
       invitee = await prisma.invitee.create({
         data: {
           name: name.trim(),
@@ -75,7 +58,6 @@ export async function POST(request: NextRequest) {
         isAttending: invitee.isAttending,
         adultsCount: invitee.adultsCount,
         kidsCount: invitee.kidsCount,
-        maxKidsCount: invitee.maxKidsCount,
         message: invitee.message,
       },
     });

@@ -1,11 +1,20 @@
 import { PrismaClient } from "../generated/prisma/client";
+import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 
 const globalForPrisma = globalThis as unknown as {
   prisma: InstanceType<typeof PrismaClient> | undefined;
 };
 
-// Prisma 7 reads configuration from prisma.config.ts automatically
-export const prisma = globalForPrisma.prisma ?? new PrismaClient({});
+function createPrismaClient() {
+  // Use DATABASE_URL if set (e.g. Vercel), else default SQLite file path
+  const url =
+    process.env.DATABASE_URL ||
+    `file:${process.cwd()}/prisma/dev.db`;
+  const adapter = new PrismaBetterSqlite3({ url });
+  return new PrismaClient({ adapter });
+}
+
+export const prisma = globalForPrisma.prisma ?? createPrismaClient();
 
 if (process.env.NODE_ENV !== "production") {
   globalForPrisma.prisma = prisma;
