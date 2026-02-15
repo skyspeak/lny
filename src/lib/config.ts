@@ -33,7 +33,6 @@ export const eventConfig = {
     "/photos/img2.png",
     "/photos/cde29d2e9eee83b8ec548517bd393dad.webp",
     "/photos/images.jpeg",
-    "/photos/photo-2.jpg",
     "/photos/photo-3.jpeg",
   ],
 };
