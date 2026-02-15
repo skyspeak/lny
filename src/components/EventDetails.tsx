@@ -11,7 +11,7 @@ export default function EventDetails() {
       transition={{ duration: 0.6, delay: 0.2 }}
       className="w-full max-w-2xl mx-auto"
     >
-      <div className="bg-white/70 backdrop-blur-sm rounded-2xl md:rounded-3xl p-6 md:p-10 shadow-soft border border-lavender/20">
+      <div className="bg-white/70 backdrop-blur-sm rounded-2xl md:rounded-3xl p-6 md:p-10 shadow-soft border border-imperial-red/20">
         {/* Theme description */}
         <p className="text-charcoal/80 text-center leading-relaxed mb-6 md:mb-8 text-base md:text-lg">
           {eventConfig.themeDescription}
@@ -21,9 +21,9 @@ export default function EventDetails() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
           {/* Date & Time */}
           <div className="flex items-start gap-3 md:gap-4">
-            <div className="w-12 h-12 rounded-xl md:rounded-2xl bg-lavender/15 flex items-center justify-center flex-shrink-0">
+            <div className="w-12 h-12 rounded-xl md:rounded-2xl bg-imperial-red/15 flex items-center justify-center flex-shrink-0">
               <svg
-                className="w-5 h-5 md:w-6 md:h-6 text-lavender"
+                className="w-5 h-5 md:w-6 md:h-6 text-imperial-red"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
@@ -37,8 +37,8 @@ export default function EventDetails() {
               </svg>
             </div>
             <div>
-              <h3 className="font-semibold text-charcoal text-xs md:text-sm uppercase tracking-wide mb-1">
-                When
+              <h3 className="font-semibold text-imperial-red text-xs md:text-sm uppercase tracking-wide mb-1">
+                时间 When
               </h3>
               <p className="text-charcoal/80 text-sm md:text-base">{eventConfig.date}</p>
               <p className="text-charcoal/60 text-xs md:text-sm">{eventConfig.time}</p>
@@ -47,9 +47,9 @@ export default function EventDetails() {
 
           {/* Location */}
           <div className="flex items-start gap-3 md:gap-4">
-            <div className="w-12 h-12 rounded-xl md:rounded-2xl bg-seafoam/15 flex items-center justify-center flex-shrink-0">
+            <div className="w-12 h-12 rounded-xl md:rounded-2xl bg-golden/15 flex items-center justify-center flex-shrink-0">
               <svg
-                className="w-5 h-5 md:w-6 md:h-6 text-seafoam"
+                className="w-5 h-5 md:w-6 md:h-6 text-lucky-gold"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
@@ -68,8 +68,8 @@ export default function EventDetails() {
               </svg>
             </div>
             <div>
-              <h3 className="font-semibold text-charcoal text-xs md:text-sm uppercase tracking-wide mb-1">
-                Where
+              <h3 className="font-semibold text-lucky-gold text-xs md:text-sm uppercase tracking-wide mb-1">
+                地点 Where
               </h3>
               <p className="text-charcoal/80 text-sm md:text-base">{eventConfig.venueName}</p>
               <p className="text-charcoal/60 text-xs md:text-sm">{eventConfig.address}</p>
@@ -78,9 +78,9 @@ export default function EventDetails() {
                   href={eventConfig.mapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-seafoam hover:text-seafoam/80 text-xs md:text-sm underline underline-offset-2 mt-1 inline-block transition-colors touch-manipulation min-h-[44px] flex items-center"
+                  className="text-golden hover:text-golden/80 text-xs md:text-sm underline underline-offset-2 mt-1 inline-block transition-colors touch-manipulation min-h-[44px] flex items-center"
                 >
-                  View on Map
+                  查看地图 View on Map
                 </a>
               )}
             </div>
@@ -89,7 +89,7 @@ export default function EventDetails() {
 
         {/* Additional info */}
         {eventConfig.additionalInfo && (
-          <div className="mt-6 md:mt-8 pt-6 border-t border-lavender/15">
+          <div className="mt-6 md:mt-8 pt-6 border-t border-imperial-red/15">
             <p className="text-charcoal/60 text-xs md:text-sm text-center leading-relaxed">
               {eventConfig.additionalInfo}
             </p>

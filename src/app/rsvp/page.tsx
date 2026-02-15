@@ -146,23 +146,23 @@ function RSVPContent() {
               transition={{ duration: 0.4 }}
               className="w-full max-w-lg"
             >
-              <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-6 md:p-10 shadow-soft border border-lavender/20 text-center">
+              <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-6 md:p-10 shadow-soft border border-imperial-red/30 text-center">
                 <div className="text-5xl md:text-6xl mb-4 animate-float">
-                  {isAttending ? "🦄" : "💜"}
+                  {isAttending ? "🐴" : "🧧"}
                 </div>
-                <h3 className="font-serif text-2xl md:text-3xl text-charcoal mb-3">
-                  {isAttending ? "Yay! See you there!" : "We'll miss you!"}
+                <h3 className="font-serif text-2xl md:text-3xl text-imperial-red mb-3">
+                  {isAttending ? "恭喜！See you there!" : "We'll miss you!"}
                 </h3>
                 {isAttending ? (
                   <>
                     <p className="text-charcoal/60 mb-2 text-sm md:text-base">
                       <span className="font-semibold">{guestName}</span> - You're coming with{" "}
-                      <span className="font-semibold text-lavender">{adultsCount}</span>{" "}
+                      <span className="font-semibold text-imperial-red">{adultsCount}</span>{" "}
                       {adultsCount === 1 ? "adult" : "adults"}
                       {kidsCount > 0 && (
                         <>
                           {" "}and{" "}
-                          <span className="font-semibold text-seafoam">{kidsCount}</span>{" "}
+                          <span className="font-semibold text-golden">{kidsCount}</span>{" "}
                           {kidsCount === 1 ? "kid" : "kids"}
                         </>
                       )}
@@ -202,9 +202,9 @@ function RSVPContent() {
                 <div className="mt-6">
                   <a
                     href="/"
-                    className="inline-block px-8 py-3 rounded-2xl bg-gradient-to-r from-lavender to-seafoam text-white font-medium hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
+                    className="inline-block px-8 py-3 rounded-2xl bg-gradient-to-r from-imperial-red to-golden text-white font-medium hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
                   >
-                    Back to Party Page
+                    回到庆典页面 Back to Celebration
                   </a>
                 </div>
               </div>
@@ -228,10 +228,10 @@ function RSVPContent() {
           <section className="relative pt-12 md:pt-16 pb-4 md:pb-6 px-4 text-center overflow-hidden">
             {/* Decorative floating elements */}
             <div className="hidden sm:block absolute top-20 left-[10%] text-3xl md:text-4xl opacity-30 animate-float select-none pointer-events-none">
-              🧜‍♀️
+              🏮
             </div>
             <div className="hidden sm:block absolute top-32 right-[12%] text-2xl md:text-3xl opacity-25 animate-float-delay select-none pointer-events-none">
-              🦄
+              🐴
             </div>
 
             <motion.div
@@ -239,8 +239,8 @@ function RSVPContent() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <p className="text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em] text-lavender/80 mb-2 md:mb-3 font-medium">
-                You&apos;re Invited
+              <p className="text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em] text-imperial-red/80 mb-2 md:mb-3 font-medium">
+                诚挚邀请 You&apos;re Invited
               </p>
               <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl font-bold text-shimmer mb-3 md:mb-4 px-4">
                 {eventConfig.partyName}
@@ -273,9 +273,9 @@ function RSVPContent() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="w-full max-w-lg mx-auto"
             >
-              <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-6 md:p-10 shadow-soft border border-lavender/20">
-                <h3 className="font-serif text-2xl md:text-3xl text-charcoal text-center mb-6">
-                  Will you be joining us?
+              <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-6 md:p-10 shadow-soft border border-imperial-red/20">
+                <h3 className="font-serif text-2xl md:text-3xl text-imperial-red text-center mb-6">
+                  能否赏光出席？Will you be joining us?
                 </h3>
 
                 {/* Name Field */}
@@ -289,7 +289,7 @@ function RSVPContent() {
                     onChange={(e) => setGuestName(e.target.value)}
                     placeholder="Enter your name"
                     readOnly={!!searchParams.get("name")}
-                    className={`w-full rounded-2xl border border-lavender/20 bg-white/50 px-4 py-3 text-sm md:text-base text-charcoal placeholder:text-charcoal/30 focus:outline-none focus:ring-2 focus:ring-lavender/30 focus:border-lavender/40 transition-all touch-manipulation ${
+                    className={`w-full rounded-2xl border border-imperial-red/20 bg-white/50 px-4 py-3 text-sm md:text-base text-charcoal placeholder:text-charcoal/30 focus:outline-none focus:ring-2 focus:ring-imperial-red/30 focus:border-imperial-red/40 transition-all touch-manipulation ${
                       searchParams.get("name") ? "cursor-not-allowed opacity-70" : ""
                     }`}
                   />
@@ -301,19 +301,19 @@ function RSVPContent() {
                     onClick={() => setIsAttending(true)}
                     className={`flex-1 py-3 md:py-4 px-2 md:px-4 rounded-2xl font-medium text-sm md:text-base transition-all duration-300 ${
                       isAttending === true
-                        ? "bg-seafoam text-white shadow-md scale-[1.02] ring-2 ring-seafoam/30"
-                        : "bg-seafoam/10 text-seafoam hover:bg-seafoam/20 active:scale-95"
+                        ? "bg-imperial-red text-white shadow-md scale-[1.02] ring-2 ring-imperial-red/30"
+                        : "bg-imperial-red/10 text-imperial-red hover:bg-imperial-red/20 active:scale-95"
                     }`}
                   >
-                    <span className="hidden sm:inline">🧜‍♀️ We&apos;ll be there!</span>
-                    <span className="sm:hidden">🧜‍♀️ Yes!</span>
+                    <span className="hidden sm:inline">🐴 恭喜！We&apos;ll be there!</span>
+                    <span className="sm:hidden">🐴 Yes!</span>
                   </button>
                   <button
                     onClick={() => setIsAttending(false)}
                     className={`flex-1 py-3 md:py-4 px-2 md:px-4 rounded-2xl font-medium text-sm md:text-base transition-all duration-300 ${
                       isAttending === false
-                        ? "bg-rose text-white shadow-md scale-[1.02] ring-2 ring-rose/30"
-                        : "bg-rose/10 text-rose hover:bg-rose/20 active:scale-95"
+                        ? "bg-charcoal text-white shadow-md scale-[1.02] ring-2 ring-charcoal/30"
+                        : "bg-charcoal/10 text-charcoal hover:bg-charcoal/20 active:scale-95"
                     }`}
                   >
                     <span className="hidden sm:inline">Can&apos;t make it</span>
@@ -338,7 +338,7 @@ function RSVPContent() {
                         <div className="flex items-center gap-2 md:gap-3">
                           <button
                             onClick={() => setAdultsCount(Math.max(1, adultsCount - 1))}
-                            className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-lavender/10 text-lavender hover:bg-lavender/20 active:scale-90 flex items-center justify-center transition-all text-lg md:text-xl touch-manipulation"
+                            className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-imperial-red/10 text-imperial-red hover:bg-imperial-red/20 active:scale-90 flex items-center justify-center transition-all text-lg md:text-xl touch-manipulation"
                           >
                             −
                           </button>
@@ -347,7 +347,7 @@ function RSVPContent() {
                           </span>
                           <button
                             onClick={() => setAdultsCount(Math.min(10, adultsCount + 1))}
-                            className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-lavender/10 text-lavender hover:bg-lavender/20 active:scale-90 flex items-center justify-center transition-all text-lg md:text-xl touch-manipulation"
+                            className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-imperial-red/10 text-imperial-red hover:bg-imperial-red/20 active:scale-90 flex items-center justify-center transition-all text-lg md:text-xl touch-manipulation"
                           >
                             +
                           </button>
@@ -360,7 +360,7 @@ function RSVPContent() {
                         <div className="flex items-center gap-2 md:gap-3">
                           <button
                             onClick={() => setKidsCount(Math.max(0, kidsCount - 1))}
-                            className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-seafoam/10 text-seafoam hover:bg-seafoam/20 active:scale-90 flex items-center justify-center transition-all text-lg md:text-xl touch-manipulation"
+                            className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-golden/10 text-lucky-gold hover:bg-golden/20 active:scale-90 flex items-center justify-center transition-all text-lg md:text-xl touch-manipulation"
                           >
                             −
                           </button>
@@ -373,7 +373,7 @@ function RSVPContent() {
                             className={`w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center transition-all text-lg md:text-xl touch-manipulation ${
                               ((maxKidsCount !== null && kidsCount >= maxKidsCount) || (maxKidsCount === null && kidsCount >= 2))
                                 ? "bg-gray-100 text-gray-300 cursor-not-allowed"
-                                : "bg-seafoam/10 text-seafoam hover:bg-seafoam/20 active:scale-90"
+                                : "bg-golden/10 text-lucky-gold hover:bg-golden/20 active:scale-90"
                             }`}
                           >
                             +
@@ -398,9 +398,9 @@ function RSVPContent() {
                     <textarea
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      placeholder="Any allergies, special requests, or a nice note..."
+                      placeholder="Any dietary restrictions, special requests, or auspicious wishes..."
                       rows={3}
-                      className="w-full rounded-2xl border border-lavender/20 bg-white/50 px-4 py-3 text-sm md:text-base text-charcoal placeholder:text-charcoal/30 focus:outline-none focus:ring-2 focus:ring-lavender/30 focus:border-lavender/40 transition-all resize-none touch-manipulation"
+                      className="w-full rounded-2xl border border-imperial-red/20 bg-white/50 px-4 py-3 text-sm md:text-base text-charcoal placeholder:text-charcoal/30 focus:outline-none focus:ring-2 focus:ring-imperial-red/30 focus:border-imperial-red/40 transition-all resize-none touch-manipulation"
                     />
                   </motion.div>
                 )}
@@ -420,7 +420,7 @@ function RSVPContent() {
                 <button
                   onClick={handleSubmit}
                   disabled={submitting}
-                  className="w-full py-4 rounded-2xl font-semibold text-white transition-all duration-300 touch-manipulation bg-gradient-to-r from-lavender to-seafoam hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full py-4 rounded-2xl font-semibold text-white transition-all duration-300 touch-manipulation bg-gradient-to-r from-imperial-red to-golden hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {submitting ? (
                     <span className="inline-flex items-center gap-2">
@@ -428,7 +428,7 @@ function RSVPContent() {
                       Sending...
                     </span>
                   ) : (
-                    "Send RSVP"
+                    "发送回复 Send RSVP"
                   )}
                 </button>
               </div>
@@ -443,9 +443,9 @@ function RSVPContent() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="font-serif text-2xl md:text-3xl text-charcoal text-center mb-4 md:mb-6"
+              className="font-serif text-2xl md:text-3xl text-imperial-red text-center mb-4 md:mb-6"
             >
-              Party Photos
+              庆典相册 Celebration Photos
             </motion.h2>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -459,7 +459,7 @@ function RSVPContent() {
           {/* Footer */}
           <footer className="py-4 md:py-6 text-center px-4">
             <p className="text-charcoal/30 text-xs md:text-sm">
-              Made with ✨ for {eventConfig.childName}&apos;s magical day
+              新年快乐 • Happy Lunar New Year 2026 • 马年大吉 🐴
             </p>
           </footer>
         </main>

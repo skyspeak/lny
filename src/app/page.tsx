@@ -14,16 +14,16 @@ export default function HomePage() {
       <section className="relative pt-12 md:pt-16 pb-6 md:pb-8 px-4 text-center overflow-hidden">
         {/* Decorative floating elements - hidden on small mobile */}
         <div className="hidden sm:block absolute top-20 left-[10%] text-3xl md:text-4xl opacity-30 animate-float select-none pointer-events-none">
-          🧜‍♀️
+          🏮
         </div>
         <div className="hidden sm:block absolute top-32 right-[12%] text-2xl md:text-3xl opacity-25 animate-float-delay select-none pointer-events-none">
-          🦄
+          🐴
         </div>
         <div className="hidden md:block absolute bottom-20 left-[20%] text-2xl opacity-20 animate-float-delay select-none pointer-events-none">
-          🐚
+          🧧
         </div>
         <div className="hidden md:block absolute bottom-10 right-[18%] text-2xl opacity-20 animate-float select-none pointer-events-none">
-          ✨
+          🎆
         </div>
 
         {/* Party name */}
@@ -32,8 +32,8 @@ export default function HomePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em] text-lavender/80 mb-2 md:mb-3 font-medium">
-            You&apos;re Invited
+          <p className="text-xs md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em] text-imperial-red/80 mb-2 md:mb-3 font-medium">
+            诚挚邀请 You&apos;re Invited
           </p>
           <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl font-bold text-shimmer mb-3 md:mb-4 px-4">
             {eventConfig.partyName}
@@ -49,9 +49,9 @@ export default function HomePage() {
           >
             <a
               href="/rsvp"
-              className="inline-block px-8 py-4 rounded-2xl bg-gradient-to-r from-lavender to-seafoam text-white font-semibold hover:shadow-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.99]"
+              className="inline-block px-8 py-4 rounded-2xl bg-gradient-to-r from-imperial-red to-golden text-white font-semibold hover:shadow-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.99]"
             >
-              RSVP Now
+              立即回复 RSVP Now
             </a>
           </motion.div>
         </motion.div>
@@ -76,9 +76,9 @@ export default function HomePage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="font-serif text-3xl md:text-4xl text-charcoal text-center mb-6 md:mb-8"
+          className="font-serif text-3xl md:text-4xl text-imperial-red text-center mb-6 md:mb-8"
         >
-          The Details
+          活动详情 Event Details
         </motion.h2>
         <EventDetails />
       </section>
@@ -91,9 +91,9 @@ export default function HomePage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="font-serif text-3xl md:text-4xl text-charcoal text-center mb-6 md:mb-8"
+          className="font-serif text-3xl md:text-4xl text-imperial-red text-center mb-6 md:mb-8"
         >
-          Who&apos;s Coming
+          来宾名单 Guest List
         </motion.h2>
         <GuestList />
       </section>
@@ -101,7 +101,7 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="py-6 md:py-8 text-center px-4">
         <p className="text-charcoal/30 text-xs md:text-sm">
-          Made with ✨ for {eventConfig.childName}&apos;s magical day
+          新年快乐 • Happy Lunar New Year 2026 • 马年大吉 🐴
         </p>
       </footer>
     </main>

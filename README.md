@@ -1,22 +1,33 @@
-# 🧜‍♀️🦄 Birthday Party RSVP App
+# 🐴🏮 Lunar New Year (Year of the Horse) RSVP App
 
-A beautifully designed, mobile-optimized birthday party invitation and RSVP website with castle gate opening animation and a whimsical multi-theme celebration.
+A beautifully designed, mobile-optimized Lunar New Year celebration invitation and RSVP website with traditional Chinese temple gate opening animation and magnificent Year of the Horse theme.
 
 ## ✨ Features
 
-- **Animated castle gate opening** - Guests are greeted with a magical 3D castle animation with flipping gates, waving flags, sparkles, and a humorous welcome message
+- **Animated Chinese temple gate opening** - Guests are greeted with a traditional red and gold palace gate animation with red lanterns, galloping horses, and auspicious Chinese characters
 - **Single RSVP link** - One link for all guests (no need for personalized invites)
-- **Beautiful photo carousel** - Swipeable gallery with your party photos
+- **Beautiful photo carousel** - Swipeable gallery with your celebration photos
 - **Mobile-first responsive design** - Optimized for all devices
 - **Seamless RSVP experience** - Name entry, adults/kids counters, and optional message
 - **Public guest list** - Shows who's coming, who can't make it, and pending replies
-- **Whimsical multi-theme design** - Cat / Mermaid / Unicorn / Dog celebration with elegant animations
+- **Authentic Chinese New Year design** - Red and gold color scheme with traditional elements and bilingual (中文/English) text
+
+## 🎨 Theme
+
+This app celebrates the **Year of the Horse (马年)** with:
+- Traditional red and gold color palette
+- Chinese temple/palace gate animation
+- Red lanterns with auspicious characters (福 - Fortune, 春 - Spring)
+- Horse emojis and galloping animations
+- Bilingual interface (Chinese and English)
+- Traditional Chinese design elements
 
 ## 🚀 Quick Start
 
 ### 1. Install Dependencies
 
 ```bash
+cd birthday
 npm install
 ```
 
@@ -32,19 +43,19 @@ Edit `src/lib/config.ts`:
 
 ```typescript
 export const eventConfig = {
-  partyName: "Your Child's Birthday",
-  childName: "Your Child",
-  date: "Sunday, March 22, 2026",
-  time: "1:00 PM – 3:00 PM",
-  venueName: "Your Venue",
-  address: "123 Your Street, Your City",
+  partyName: "马年新春庆典 Year of the Horse Celebration",
+  childName: "恭喜发财",
+  date: "Saturday, January 29, 2026",
+  time: "6:00 PM – 10:00 PM",
+  venueName: "Golden Dragon Pavilion",
+  address: "888 Fortune Way, San Francisco, CA 94102",
   // ... more options
 };
 ```
 
 ### 4. Add Your Photos
 
-Drop your photos in `public/photos/` and update `src/lib/config.ts`:
+Drop your celebration photos in `public/photos/` and update `src/lib/config.ts`:
 
 ```typescript
 photos: [
@@ -83,16 +94,16 @@ The app is **fully optimized for mobile devices** with:
 - **Fast-loading images** with lazy loading
 - **Adaptive layouts** that work on phones, tablets, and desktops
 
-## 🏰 Castle Gate Opening Animation
+## 🏮 Chinese Temple Gate Opening Animation
 
-When guests visit the RSVP link, they're greeted with a **magical castle gate animation**:
+When guests visit the RSVP link, they're greeted with a **traditional Chinese palace gate animation**:
 
-- **3D castle gates** that flip open smoothly (1.2 seconds)
-- **Two towers** with waving flags (mermaid & unicorn)
-- **Sparkles burst** from the center as gates open
-- **Welcome sign** springs in with personalized greeting
-- **Funny theme text**: "Welcome to the cat / mermaid / unicorn / dog Birthday party (we couldn't agree on a common theme)"
-- **Bouncing emojis** (🐱 🧜‍♀️ 🦄 🐶) add playfulness
+- **3D temple gates** with red and gold colors that flip open smoothly (1.2 seconds)
+- **Red lanterns** hanging from pillars with Chinese characters (福 and 春)
+- **Golden door studs** in traditional pattern
+- **Firecracker sparkles** burst as gates open
+- **Welcome message** in Chinese and English
+- **Galloping horse emojis** (🐴 🐎 🏇) for the Year of the Horse
 
 **Smart behavior:**
 - Plays once per session (3.5 seconds total)
@@ -102,15 +113,17 @@ When guests visit the RSVP link, they're greeted with a **magical castle gate an
 ## 🎯 How It Works
 
 ### For Guests:
+
 1. Visit **http://localhost:3000/rsvp**
-2. Watch the castle gate animation
+2. Watch the Chinese temple gate animation
 3. Enter their name
-4. Select "We'll be there!" or "Can't make it"
+4. Select "恭喜！We'll be there!" or "Can't make it"
 5. If attending, set number of adults and kids
-6. Optionally add a message
-7. Click "Send RSVP"
+6. Optionally add a message (dietary restrictions or well wishes)
+7. Click "发送回复 Send RSVP"
 
 ### For You (The Host):
+
 1. Visit **http://localhost:3000** to see the public guest list
 2. Visit **http://localhost:3000/admin** for the detailed admin dashboard with:
    - Summary stats (going, not going, pending, total adults, total kids)
@@ -121,12 +134,12 @@ When guests visit the RSVP link, they're greeted with a **magical castle gate an
 ## 📁 Project Structure
 
 ```
-birthday-invite/
+lny/
 ├── prisma/
 │   ├── schema.prisma          # Database schema
 │   └── seed.ts                # Optional: pre-add guest names
 ├── public/
-│   └── photos/                # Your party photos
+│   └── photos/                # Your celebration photos
 ├── src/
 │   ├── app/
 │   │   ├── page.tsx           # Homepage (public guest list)
@@ -137,12 +150,12 @@ birthday-invite/
 │   │   ├── api/
 │   │   │   ├── invitees/      # GET all invitees
 │   │   │   └── rsvp/          # POST RSVP responses
-│   │   └── globals.css        # Global styles & theme
+│   │   └── globals.css        # Global styles & Chinese New Year theme
 │   ├── components/
-│   │   ├── CastleGateOpening.tsx  # Castle animation
+│   │   ├── CastleGateOpening.tsx  # Chinese temple gate animation
 │   │   ├── Carousel.tsx           # Photo carousel
 │   │   ├── LocationBanner.tsx     # Date/time/location banner
-│   │   ├── GuestList.tsx          # Who's coming list
+│   │   ├── GuestList.tsx          # Guest list with horse emojis
 │   │   └── WaveDivider.tsx        # Decorative wave SVG
 │   └── lib/
 │       ├── config.ts          # Event details (edit this!)
@@ -163,16 +176,16 @@ birthday-invite/
 
 ### Colors
 
-Edit `src/app/globals.css` to change the color palette:
+The app uses a traditional Chinese New Year color palette. Edit `src/app/globals.css` to customize:
 
 ```css
 @theme {
-  --color-lavender: #C4A7D7;  /* Primary accent */
-  --color-seafoam: #88C9BF;   /* Secondary accent */
-  --color-rose: #E8C4C4;      /* Tertiary accent */
-  --color-gold: #D4C5A9;      /* Pending state */
-  --color-charcoal: #2D2D2D;  /* Text */
-  --color-cream: #FAFAFA;     /* Background */
+  --color-imperial-red: #DC143C;  /* Primary red */
+  --color-golden: #FFD700;        /* Gold accent */
+  --color-crimson: #8B0000;       /* Dark red */
+  --color-lucky-gold: #FFA500;    /* Orange gold */
+  --color-charcoal: #1a1a1a;      /* Text */
+  --color-cream: #FFF8E7;         /* Background */
 }
 ```
 
@@ -191,9 +204,9 @@ If you want guests to see their names already in the system, edit `prisma/seed.t
 
 ```typescript
 const guests = [
-  "Alice Johnson",
-  "Bob & Maria Smith",
-  "The Garcia Family",
+  "张家",
+  "李明 & 王芳",
+  "陈家大小",
   // Add your guests here...
 ];
 ```
@@ -226,9 +239,22 @@ npx prisma db push
 1. **Test the RSVP flow** before sharing the link
 2. **Share one link with everyone**: http://localhost:3000/rsvp
 3. **Check on mobile** - most guests will RSVP from their phones
-4. **Customize the photos** to match your party theme
+4. **Customize the photos** to match your celebration
 5. **Update the config** with accurate date/time/location
+6. **Encourage red attire** for good fortune and great photos!
+
+## 🐴 Year of the Horse
+
+The Horse is the seventh animal in the Chinese zodiac. People born in the Year of the Horse are believed to be:
+- Energetic and active
+- Warm-hearted and enthusiastic
+- Independent and ambitious
+- Strong-willed and confident
+
+**马到成功** (Mǎ dào chéng gōng) - "Success arrives with the horse" - A traditional blessing for immediate success!
+
+**万马奔腾** (Wàn mǎ bēn téng) - "Ten thousand horses galloping" - Symbolizing great momentum and vitality!
 
 ---
 
-Made with ✨ for magical birthday celebrations
+新年快乐 • Happy Lunar New Year! • 马年大吉 🐴🏮

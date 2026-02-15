@@ -14,7 +14,7 @@ export default function CastleGateOpening({ guestName, onComplete }: CastleGateO
 
   useEffect(() => {
     // Check if user has seen the animation in this session
-    const hasSeenAnimation = sessionStorage.getItem('castle-gate-opened');
+    const hasSeenAnimation = sessionStorage.getItem('temple-gate-opened');
     
     if (hasSeenAnimation) {
       // Skip animation if already seen
@@ -31,7 +31,7 @@ export default function CastleGateOpening({ guestName, onComplete }: CastleGateO
     // Complete animation and show content after 3.5 seconds
     const completeTimer = setTimeout(() => {
       setShowGates(false);
-      sessionStorage.setItem('castle-gate-opened', 'true');
+      sessionStorage.setItem('temple-gate-opened', 'true');
       onComplete();
     }, 3500);
 
@@ -49,58 +49,92 @@ export default function CastleGateOpening({ guestName, onComplete }: CastleGateO
         initial={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.6 }}
-        className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-b from-lavender/20 via-cream to-seafoam/20 overflow-hidden"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-b from-imperial-red/20 via-cream to-golden/20 overflow-hidden"
       >
-        {/* Castle structure */}
+        {/* Chinese temple/palace structure */}
         <div className="absolute inset-0 flex items-center justify-center">
-          {/* Background castle towers */}
-          <div className="absolute bottom-0 w-full flex justify-center gap-8 md:gap-16 px-4">
-            {/* Left tower */}
+          {/* Background pillars with red lanterns */}
+          <div className="absolute bottom-0 w-full flex justify-center gap-12 md:gap-24 px-4">
+            {/* Left pillar with lantern */}
             <motion.div
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <div className="w-16 md:w-24 h-48 md:h-64 bg-gradient-to-b from-lavender/40 to-lavender/60 rounded-t-lg border-4 border-lavender/70 shadow-lg" />
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-20 md:w-28 h-8 md:h-10 bg-lavender/50 border-4 border-lavender/70 rounded-t-xl" />
-              {/* Flag */}
+              {/* Pillar */}
+              <div className="w-12 md:w-16 h-48 md:h-64 bg-gradient-to-b from-crimson to-imperial-red rounded-lg border-4 border-golden shadow-lg relative">
+                {/* Gold decorative bands */}
+                <div className="absolute top-4 left-0 right-0 h-2 bg-golden" />
+                <div className="absolute bottom-4 left-0 right-0 h-2 bg-golden" />
+                <div className="absolute top-1/2 left-0 right-0 h-1 bg-golden/60" />
+              </div>
+              {/* Red Lantern */}
               <motion.div
-                animate={{ rotate: [0, -5, 5, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="absolute -top-12 md:-top-16 left-1/2 transform -translate-x-1/2"
+                animate={{ 
+                  y: [0, -5, 0],
+                  rotate: [0, -3, 3, 0] 
+                }}
+                transition={{ duration: 3, repeat: Infinity }}
+                className="absolute -top-16 md:-top-20 left-1/2 transform -translate-x-1/2"
               >
-                <div className="w-1 h-16 md:h-20 bg-gold" />
-                <div className="absolute top-0 left-1 w-8 md:w-10 h-6 md:h-8 bg-seafoam rounded-r-lg">
-                  <span className="text-xs md:text-sm">🧜‍♀️</span>
+                <div className="relative">
+                  {/* Lantern top */}
+                  <div className="w-8 md:w-10 h-3 bg-golden rounded-t-lg mx-auto" />
+                  {/* Lantern body */}
+                  <div className="w-10 md:w-12 h-16 md:h-20 bg-gradient-to-b from-imperial-red to-crimson rounded-lg shadow-lg lantern-glow border-2 border-golden flex items-center justify-center">
+                    <span className="text-golden font-bold text-xs md:text-sm">福</span>
+                  </div>
+                  {/* Lantern bottom */}
+                  <div className="w-8 md:w-10 h-3 bg-golden rounded-b-lg mx-auto" />
+                  {/* Tassel */}
+                  <div className="w-px h-4 bg-golden mx-auto" />
+                  <div className="w-4 h-6 bg-golden/80 mx-auto rounded-b-full" />
                 </div>
               </motion.div>
             </motion.div>
 
-            {/* Right tower */}
+            {/* Right pillar with lantern */}
             <motion.div
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <div className="w-16 md:w-24 h-48 md:h-64 bg-gradient-to-b from-seafoam/40 to-seafoam/60 rounded-t-lg border-4 border-seafoam/70 shadow-lg" />
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-20 md:w-28 h-8 md:h-10 bg-seafoam/50 border-4 border-seafoam/70 rounded-t-xl" />
-              {/* Flag */}
+              {/* Pillar */}
+              <div className="w-12 md:w-16 h-48 md:h-64 bg-gradient-to-b from-crimson to-imperial-red rounded-lg border-4 border-golden shadow-lg relative">
+                {/* Gold decorative bands */}
+                <div className="absolute top-4 left-0 right-0 h-2 bg-golden" />
+                <div className="absolute bottom-4 left-0 right-0 h-2 bg-golden" />
+                <div className="absolute top-1/2 left-0 right-0 h-1 bg-golden/60" />
+              </div>
+              {/* Red Lantern */}
               <motion.div
-                animate={{ rotate: [0, 5, -5, 0] }}
-                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                className="absolute -top-12 md:-top-16 left-1/2 transform -translate-x-1/2"
+                animate={{ 
+                  y: [0, -5, 0],
+                  rotate: [0, 3, -3, 0] 
+                }}
+                transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
+                className="absolute -top-16 md:-top-20 left-1/2 transform -translate-x-1/2"
               >
-                <div className="w-1 h-16 md:h-20 bg-gold" />
-                <div className="absolute top-0 left-1 w-8 md:w-10 h-6 md:h-8 bg-lavender rounded-r-lg">
-                  <span className="text-xs md:text-sm">🦄</span>
+                <div className="relative">
+                  {/* Lantern top */}
+                  <div className="w-8 md:w-10 h-3 bg-golden rounded-t-lg mx-auto" />
+                  {/* Lantern body */}
+                  <div className="w-10 md:w-12 h-16 md:h-20 bg-gradient-to-b from-imperial-red to-crimson rounded-lg shadow-lg lantern-glow border-2 border-golden flex items-center justify-center">
+                    <span className="text-golden font-bold text-xs md:text-sm">春</span>
+                  </div>
+                  {/* Lantern bottom */}
+                  <div className="w-8 md:w-10 h-3 bg-golden rounded-b-lg mx-auto" />
+                  {/* Tassel */}
+                  <div className="w-px h-4 bg-golden mx-auto" />
+                  <div className="w-4 h-6 bg-golden/80 mx-auto rounded-b-full" />
                 </div>
               </motion.div>
             </motion.div>
           </div>
 
-          {/* Castle gates */}
+          {/* Temple/Palace gates */}
           <div className="relative z-10 flex items-center justify-center">
             {/* Left gate */}
             <motion.div
@@ -111,18 +145,26 @@ export default function CastleGateOpening({ guestName, onComplete }: CastleGateO
                 transformOrigin: "left center",
                 transformStyle: "preserve-3d",
               }}
-              className="w-32 md:w-48 h-64 md:h-96 bg-gradient-to-r from-charcoal/90 to-charcoal/70 border-8 border-charcoal shadow-2xl rounded-l-lg"
+              className="w-32 md:w-48 h-64 md:h-96 bg-gradient-to-br from-crimson via-imperial-red to-crimson border-8 border-golden shadow-2xl rounded-l-lg relative"
             >
-              <div className="absolute inset-4 grid grid-cols-3 gap-2">
-                {[...Array(12)].map((_, i) => (
-                  <div key={i} className="bg-gold/20 rounded" />
+              {/* Traditional door studs pattern */}
+              <div className="absolute inset-6 grid grid-cols-3 gap-3">
+                {[...Array(15)].map((_, i) => (
+                  <div key={i} className="w-3 h-3 md:w-4 md:h-4 bg-golden rounded-full shadow-md" />
                 ))}
               </div>
-              {/* Door handle */}
-              <div className="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-12 md:w-6 md:h-16 bg-gold rounded-full shadow-md" />
-              {/* Decorative emoji */}
-              <div className="absolute top-8 left-1/2 transform -translate-x-1/2 text-2xl md:text-4xl">
-                🐱
+              {/* Door ring handle */}
+              <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
+                <div className="w-6 h-6 md:w-8 md:h-8 bg-golden rounded-full shadow-lg" />
+                <div className="w-4 h-8 md:w-6 md:h-12 bg-golden/80 rounded-full mx-auto mt-1" />
+              </div>
+              {/* Horse emoji */}
+              <div className="absolute top-12 left-1/2 transform -translate-x-1/2 text-3xl md:text-5xl filter drop-shadow-lg">
+                🐴
+              </div>
+              {/* Chinese character */}
+              <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-golden font-bold text-2xl md:text-4xl">
+                马
               </div>
             </motion.div>
 
@@ -135,18 +177,26 @@ export default function CastleGateOpening({ guestName, onComplete }: CastleGateO
                 transformOrigin: "right center",
                 transformStyle: "preserve-3d",
               }}
-              className="w-32 md:w-48 h-64 md:h-96 bg-gradient-to-l from-charcoal/90 to-charcoal/70 border-8 border-charcoal shadow-2xl rounded-r-lg"
+              className="w-32 md:w-48 h-64 md:h-96 bg-gradient-to-bl from-crimson via-imperial-red to-crimson border-8 border-golden shadow-2xl rounded-r-lg relative"
             >
-              <div className="absolute inset-4 grid grid-cols-3 gap-2">
-                {[...Array(12)].map((_, i) => (
-                  <div key={i} className="bg-gold/20 rounded" />
+              {/* Traditional door studs pattern */}
+              <div className="absolute inset-6 grid grid-cols-3 gap-3">
+                {[...Array(15)].map((_, i) => (
+                  <div key={i} className="w-3 h-3 md:w-4 md:h-4 bg-golden rounded-full shadow-md" />
                 ))}
               </div>
-              {/* Door handle */}
-              <div className="absolute left-4 top-1/2 transform -translate-y-1/2 w-4 h-12 md:w-6 md:h-16 bg-gold rounded-full shadow-md" />
-              {/* Decorative emoji */}
-              <div className="absolute top-8 left-1/2 transform -translate-x-1/2 text-2xl md:text-4xl">
-                🐶
+              {/* Door ring handle */}
+              <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
+                <div className="w-6 h-6 md:w-8 md:h-8 bg-golden rounded-full shadow-lg" />
+                <div className="w-4 h-8 md:w-6 md:h-12 bg-golden/80 rounded-full mx-auto mt-1" />
+              </div>
+              {/* Horse emoji */}
+              <div className="absolute top-12 left-1/2 transform -translate-x-1/2 text-3xl md:text-5xl filter drop-shadow-lg">
+                🐎
+              </div>
+              {/* Chinese character */}
+              <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-golden font-bold text-2xl md:text-4xl">
+                年
               </div>
             </motion.div>
           </div>
@@ -166,53 +216,66 @@ export default function CastleGateOpening({ guestName, onComplete }: CastleGateO
               }}
               className="absolute z-20 max-w-xs md:max-w-md lg:max-w-lg px-6"
             >
-              <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-6 md:p-8 shadow-2xl border-4 border-lavender/30">
-                <div className="text-center">
+              <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-6 md:p-8 shadow-2xl border-4 border-golden relative overflow-hidden">
+                {/* Red corner decorations */}
+                <div className="absolute top-0 left-0 w-16 h-16 bg-imperial-red/20 rounded-br-full" />
+                <div className="absolute bottom-0 right-0 w-16 h-16 bg-imperial-red/20 rounded-tl-full" />
+                
+                <div className="text-center relative z-10">
                   <motion.div
-                    animate={{ rotate: [0, -5, 5, 0] }}
-                    transition={{ duration: 1, repeat: Infinity, delay: 1 }}
-                    className="text-4xl md:text-5xl mb-4"
+                    animate={{ 
+                      scale: [1, 1.1, 1],
+                      rotate: [0, -5, 5, 0] 
+                    }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                    className="text-5xl md:text-6xl mb-4"
                   >
-                    🎉
+                    🐴
                   </motion.div>
-                  <h2 className="font-serif text-xl md:text-3xl font-bold text-charcoal mb-3">
-                    {guestName === "Guest" ? "Welcome!" : `Welcome, ${guestName}!`}
+                  <h2 className="font-serif text-2xl md:text-4xl font-bold text-imperial-red mb-2">
+                    {guestName === "Guest" ? "欢迎光临！" : `欢迎, ${guestName}!`}
                   </h2>
-                  <p className="text-charcoal/70 text-sm md:text-base leading-relaxed">
-                    to the{" "}
-                    <span className="font-semibold text-lavender">cat</span> /{" "}
-                    <span className="font-semibold text-seafoam">mermaid</span> /{" "}
-                    <span className="font-semibold text-rose">unicorn</span> /{" "}
-                    <span className="font-semibold text-gold">dog</span>{" "}
-                    Birthday party
+                  <p className="text-golden text-lg md:text-xl font-semibold mb-3">
+                    Welcome!
                   </p>
-                  <p className="text-charcoal/50 text-xs md:text-sm italic mt-2">
-                    (we couldn&apos;t agree on a common theme)
+                  <p className="text-charcoal/70 text-sm md:text-base leading-relaxed mb-2">
+                    to the <span className="font-bold text-imperial-red">Year of the Horse</span> celebration
                   </p>
-                  <div className="flex justify-center gap-2 mt-4 text-2xl md:text-3xl">
+                  <p className="text-charcoal/60 text-xs md:text-sm mb-3">
+                    马到成功 • 万马奔腾
+                  </p>
+                  <p className="text-charcoal/50 text-xs italic">
+                    May success arrive with the horse!
+                  </p>
+                  
+                  {/* Galloping horses */}
+                  <div className="flex justify-center gap-3 mt-4 text-3xl md:text-4xl">
                     <motion.span
-                      animate={{ y: [0, -10, 0] }}
-                      transition={{ duration: 0.6, repeat: Infinity, delay: 0 }}
+                      animate={{ 
+                        y: [0, -12, 0],
+                        x: [0, 3, 0]
+                      }}
+                      transition={{ duration: 0.8, repeat: Infinity, delay: 0 }}
                     >
-                      🐱
+                      🐴
                     </motion.span>
                     <motion.span
-                      animate={{ y: [0, -10, 0] }}
-                      transition={{ duration: 0.6, repeat: Infinity, delay: 0.15 }}
+                      animate={{ 
+                        y: [0, -12, 0],
+                        x: [0, 3, 0]
+                      }}
+                      transition={{ duration: 0.8, repeat: Infinity, delay: 0.2 }}
                     >
-                      🧜‍♀️
+                      🐎
                     </motion.span>
                     <motion.span
-                      animate={{ y: [0, -10, 0] }}
-                      transition={{ duration: 0.6, repeat: Infinity, delay: 0.3 }}
+                      animate={{ 
+                        y: [0, -12, 0],
+                        x: [0, 3, 0]
+                      }}
+                      transition={{ duration: 0.8, repeat: Infinity, delay: 0.4 }}
                     >
-                      🦄
-                    </motion.span>
-                    <motion.span
-                      animate={{ y: [0, -10, 0] }}
-                      transition={{ duration: 0.6, repeat: Infinity, delay: 0.45 }}
-                    >
-                      🐶
+                      🏇
                     </motion.span>
                   </div>
                 </div>
@@ -221,31 +284,32 @@ export default function CastleGateOpening({ guestName, onComplete }: CastleGateO
           )}
         </AnimatePresence>
 
-        {/* Sparkles effect */}
+        {/* Firecracker sparkles effect */}
         {gatesOpened && (
           <>
-            {[...Array(12)].map((_, i) => (
+            {[...Array(20)].map((_, i) => (
               <motion.div
                 key={i}
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ 
-                  scale: [0, 1, 0],
+                  scale: [0, 1.5, 0],
                   opacity: [0, 1, 0],
-                  x: [0, (Math.random() - 0.5) * 300],
-                  y: [0, (Math.random() - 0.5) * 300],
+                  x: [0, (Math.random() - 0.5) * 400],
+                  y: [0, (Math.random() - 0.5) * 400],
                 }}
                 transition={{ 
                   duration: 2,
-                  delay: 0.5 + i * 0.1,
+                  delay: 0.5 + i * 0.08,
                   ease: "easeOut"
                 }}
-                className="absolute text-2xl md:text-3xl pointer-events-none"
+                className="absolute text-xl md:text-2xl pointer-events-none"
                 style={{
                   left: '50%',
                   top: '50%',
+                  color: i % 3 === 0 ? '#FFD700' : i % 3 === 1 ? '#DC143C' : '#FFA500'
                 }}
               >
-                ✨
+                {i % 4 === 0 ? '✨' : i % 4 === 1 ? '🎆' : i % 4 === 2 ? '🎊' : '💫'}
               </motion.div>
             ))}
           </>

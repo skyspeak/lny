@@ -68,7 +68,7 @@ export default function AdminPage() {
   if (loading) {
     return (
       <main className="min-h-screen flex items-center justify-center">
-        <div className="inline-block w-8 h-8 border-2 border-lavender/30 border-t-lavender rounded-full animate-spin" />
+        <div className="inline-block w-8 h-8 border-2 border-imperial-red/30 border-t-imperial-red rounded-full animate-spin" />
       </main>
     );
   }
@@ -84,7 +84,7 @@ export default function AdminPage() {
           className="text-center mb-8"
         >
           <h1 className="font-serif text-3xl md:text-5xl font-bold text-shimmer mb-2">
-            Admin Dashboard
+            管理后台 Admin Dashboard
           </h1>
           <p className="text-charcoal/60 text-sm md:text-base">
             {eventConfig.partyName}
@@ -98,40 +98,40 @@ export default function AdminPage() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 mb-8"
         >
-          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 shadow-soft border border-seafoam/20 text-center">
-            <p className="text-3xl md:text-4xl font-bold text-seafoam mb-1">
+          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 shadow-soft border border-imperial-red/20 text-center">
+            <p className="text-3xl md:text-4xl font-bold text-imperial-red mb-1">
               {going.length}
             </p>
             <p className="text-xs md:text-sm text-charcoal/60 uppercase tracking-wide">
               Going
             </p>
           </div>
-          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 shadow-soft border border-rose/20 text-center">
-            <p className="text-3xl md:text-4xl font-bold text-rose mb-1">
+          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 shadow-soft border border-charcoal/20 text-center">
+            <p className="text-3xl md:text-4xl font-bold text-charcoal mb-1">
               {notGoing.length}
             </p>
             <p className="text-xs md:text-sm text-charcoal/60 uppercase tracking-wide">
               Not Going
             </p>
           </div>
-          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 shadow-soft border border-gold/20 text-center">
-            <p className="text-3xl md:text-4xl font-bold text-gold mb-1">
+          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 shadow-soft border border-lucky-gold/20 text-center">
+            <p className="text-3xl md:text-4xl font-bold text-lucky-gold mb-1">
               {pending.length}
             </p>
             <p className="text-xs md:text-sm text-charcoal/60 uppercase tracking-wide">
               Pending
             </p>
           </div>
-          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 shadow-soft border border-lavender/20 text-center">
-            <p className="text-3xl md:text-4xl font-bold text-lavender mb-1">
+          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 shadow-soft border border-imperial-red/20 text-center">
+            <p className="text-3xl md:text-4xl font-bold text-imperial-red mb-1">
               {totalAdults}
             </p>
             <p className="text-xs md:text-sm text-charcoal/60 uppercase tracking-wide">
               Adults
             </p>
           </div>
-          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 shadow-soft border border-seafoam/20 text-center">
-            <p className="text-3xl md:text-4xl font-bold text-seafoam mb-1">
+          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-4 shadow-soft border border-golden/20 text-center">
+            <p className="text-3xl md:text-4xl font-bold text-golden mb-1">
               {totalKids}
             </p>
             <p className="text-xs md:text-sm text-charcoal/60 uppercase tracking-wide">
@@ -145,9 +145,9 @@ export default function AdminPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-soft border border-lavender/20 overflow-hidden"
+          className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-soft border border-imperial-red/20 overflow-hidden"
         >
-          <div className="p-4 md:p-6 border-b border-lavender/15">
+          <div className="p-4 md:p-6 border-b border-imperial-red/15">
             <h2 className="font-serif text-xl md:text-2xl font-semibold text-charcoal">
               All RSVPs ({invitees.length})
             </h2>
@@ -160,7 +160,7 @@ export default function AdminPage() {
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-lavender/5 border-b border-lavender/10">
+                <thead className="bg-imperial-red/5 border-b border-imperial-red/10">
                   <tr>
                     <th className="px-4 md:px-6 py-3 text-left text-xs font-semibold text-charcoal/70 uppercase tracking-wider">
                       Name
@@ -185,29 +185,29 @@ export default function AdminPage() {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-lavender/10">
+                <tbody className="divide-y divide-imperial-red/10">
                   {invitees.map((invitee, index) => (
                     <motion.tr
                       key={invitee.id}
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.05 }}
-                      className="hover:bg-lavender/5 transition-colors"
+                      className="hover:bg-imperial-red/5 transition-colors"
                     >
                       <td className="px-4 md:px-6 py-4 text-sm font-medium text-charcoal">
                         {invitee.name}
                       </td>
                       <td className="px-4 md:px-6 py-4 text-center">
                         {invitee.isAttending === null ? (
-                          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gold/10 text-gold">
+                          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-lucky-gold/10 text-lucky-gold">
                             Pending
                           </span>
                         ) : invitee.isAttending ? (
-                          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-seafoam/10 text-seafoam">
+                          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-imperial-red/10 text-imperial-red">
                             ✓ Going
                           </span>
                         ) : (
-                          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-rose/10 text-rose">
+                          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-charcoal/10 text-charcoal">
                             ✗ Not Going
                           </span>
                         )}
@@ -239,11 +239,11 @@ export default function AdminPage() {
                         <button
                           onClick={() => handleDelete(invitee.id, invitee.name)}
                           disabled={deletingId === invitee.id}
-                          className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-rose/10 text-rose hover:bg-rose/20 hover:text-rose transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-crimson/10 text-crimson hover:bg-crimson/20 hover:text-crimson transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                           title="Delete invitee"
                         >
                           {deletingId === invitee.id ? (
-                            <div className="w-4 h-4 border-2 border-rose/30 border-t-rose rounded-full animate-spin" />
+                            <div className="w-4 h-4 border-2 border-crimson/30 border-t-crimson rounded-full animate-spin" />
                           ) : (
                             <svg
                               className="w-4 h-4"
@@ -278,7 +278,7 @@ export default function AdminPage() {
         >
           <a
             href="/"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white/70 backdrop-blur-sm border border-lavender/20 text-charcoal hover:bg-lavender/10 transition-all font-medium text-sm"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white/70 backdrop-blur-sm border border-imperial-red/20 text-charcoal hover:bg-imperial-red/10 transition-all font-medium text-sm"
           >
             <svg
               className="w-4 h-4"
@@ -297,7 +297,7 @@ export default function AdminPage() {
           </a>
           <a
             href="/rsvp"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-lavender to-seafoam text-white hover:shadow-lg transition-all font-medium text-sm hover:scale-[1.02]"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-imperial-red to-golden text-white hover:shadow-lg transition-all font-medium text-sm hover:scale-[1.02]"
           >
             <svg
               className="w-4 h-4"
@@ -319,7 +319,7 @@ export default function AdminPage() {
         {/* Footer */}
         <footer className="mt-12 text-center">
           <p className="text-charcoal/30 text-xs md:text-sm">
-            Admin Dashboard • {eventConfig.childName}&apos;s Birthday Party
+            管理后台 Admin Dashboard • 新年快乐 • 马年大吉 🐴
           </p>
         </footer>
       </div>

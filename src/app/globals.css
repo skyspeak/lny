@@ -1,18 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --color-lavender: #C4A7D7;
-  --color-seafoam: #88C9BF;
-  --color-rose: #E8C4C4;
-  --color-gold: #D4C5A9;
-  --color-charcoal: #2D2D2D;
-  --color-cream: #FAFAFA;
-  --color-warmwhite: #F5F0EB;
+  --color-imperial-red: #DC143C;
+  --color-golden: #FFD700;
+  --color-crimson: #8B0000;
+  --color-lucky-gold: #FFA500;
+  --color-charcoal: #1a1a1a;
+  --color-cream: #FFF8E7;
+  --color-warmwhite: #FFFAF0;
+  --color-jade: #00A86B;
+  --color-lantern-red: #E63946;
 
   --font-serif: var(--font-cormorant), serif;
   --font-sans: var(--font-dm-sans), sans-serif;
 
-  --shadow-soft: 0 4px 24px rgba(196, 167, 215, 0.12);
+  --shadow-soft: 0 4px 24px rgba(220, 20, 60, 0.15);
+  --shadow-gold: 0 4px 16px rgba(255, 215, 0, 0.3);
 }
 
 * {
@@ -30,7 +33,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Shimmer animation for special text */
+/* Shimmer animation for special text - Chinese New Year gold shimmer */
 @keyframes shimmer {
   0% {
     background-position: -200% center;
@@ -43,20 +46,20 @@ html {
 .text-shimmer {
   background: linear-gradient(
     90deg,
-    var(--color-lavender) 0%,
-    var(--color-seafoam) 25%,
-    var(--color-gold) 50%,
-    var(--color-seafoam) 75%,
-    var(--color-lavender) 100%
+    var(--color-imperial-red) 0%,
+    var(--color-golden) 25%,
+    var(--color-lucky-gold) 50%,
+    var(--color-golden) 75%,
+    var(--color-imperial-red) 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 4s linear infinite;
+  animation: shimmer 3s linear infinite;
 }
 
-/* Floating animation for decorative elements */
+/* Floating animation for decorative elements (lanterns, horses) */
 @keyframes float {
   0%,
   100% {
@@ -76,16 +79,50 @@ html {
   animation-delay: 1.5s;
 }
 
-/* Gradient background */
+/* Galloping horse animation */
+@keyframes gallop {
+  0%, 100% {
+    transform: translateX(-5px) translateY(0);
+  }
+  25% {
+    transform: translateX(0) translateY(-8px);
+  }
+  50% {
+    transform: translateX(5px) translateY(0);
+  }
+  75% {
+    transform: translateX(0) translateY(-5px);
+  }
+}
+
+.animate-gallop {
+  animation: gallop 1s ease-in-out infinite;
+}
+
+/* Red and gold gradient background */
 .bg-enchanted {
   background: linear-gradient(
     135deg,
     var(--color-cream) 0%,
-    #f0e6f6 30%,
-    #e6f3f0 60%,
+    #ffe5e5 30%,
+    #fff4d4 60%,
     var(--color-warmwhite) 100%
   );
   background-attachment: fixed;
+}
+
+/* Lantern glow effect */
+@keyframes lantern-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(220, 20, 60, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+  }
+}
+
+.lantern-glow {
+  animation: lantern-glow 2s ease-in-out infinite;
 }
 
 /* Smooth transitions for all interactive elements */
@@ -101,4 +138,20 @@ a {
   a {
     min-height: 44px;
   }
+}
+
+/* Firecracker sparkle effect */
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.sparkle {
+  animation: sparkle 1.5s ease-in-out infinite;
 }

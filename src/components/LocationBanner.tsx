@@ -11,13 +11,13 @@ export default function LocationBanner() {
       transition={{ duration: 0.6, delay: 0.1 }}
       className="w-full"
     >
-      <div className="bg-gradient-to-r from-lavender/10 via-seafoam/10 to-lavender/10 backdrop-blur-sm rounded-2xl md:rounded-3xl p-4 md:p-6 shadow-soft border border-lavender/20">
+      <div className="bg-gradient-to-r from-imperial-red/10 via-golden/10 to-imperial-red/10 backdrop-blur-sm rounded-2xl md:rounded-3xl p-4 md:p-6 shadow-soft border border-golden/30">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-start gap-4 md:gap-8 text-left">
           {/* Date & Time */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-lavender/20 flex items-center justify-center flex-shrink-0">
+            <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-imperial-red/20 flex items-center justify-center flex-shrink-0">
               <svg
-                className="w-5 h-5 md:w-6 md:h-6 text-lavender"
+                className="w-5 h-5 md:w-6 md:h-6 text-imperial-red"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
@@ -39,7 +39,7 @@ export default function LocationBanner() {
           </div>
 
           {/* Divider */}
-          <div className="hidden md:block w-px h-12 bg-lavender/20" />
+          <div className="hidden md:block w-px h-12 bg-golden/30" />
 
           {/* Location */}
           <a
@@ -48,9 +48,9 @@ export default function LocationBanner() {
             rel="noopener noreferrer"
             className="flex items-center gap-3 group cursor-pointer"
           >
-            <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-seafoam/20 group-hover:bg-seafoam/30 flex items-center justify-center flex-shrink-0 transition-colors">
+            <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-golden/20 group-hover:bg-golden/30 flex items-center justify-center flex-shrink-0 transition-colors">
               <svg
-                className="w-5 h-5 md:w-6 md:h-6 text-seafoam"
+                className="w-5 h-5 md:w-6 md:h-6 text-lucky-gold"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
@@ -69,7 +69,7 @@ export default function LocationBanner() {
               </svg>
             </div>
             <div className="text-left">
-              <p className="font-semibold text-charcoal group-hover:text-seafoam text-sm md:text-base transition-colors">
+              <p className="font-semibold text-charcoal group-hover:text-golden text-sm md:text-base transition-colors">
                 {eventConfig.venueName}
               </p>
               <p className="text-charcoal/60 text-xs md:text-sm">
@@ -81,12 +81,12 @@ export default function LocationBanner() {
           {/* Map link */}
           {eventConfig.mapUrl && (
             <>
-              <div className="hidden md:block w-px h-12 bg-seafoam/20" />
+              <div className="hidden md:block w-px h-12 bg-golden/30" />
               <a
                 href={eventConfig.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-seafoam/10 text-seafoam hover:bg-seafoam/20 transition-all text-sm font-medium touch-manipulation"
+                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-golden/10 text-lucky-gold hover:bg-golden/20 transition-all text-sm font-medium touch-manipulation"
               >
                 <svg
                   className="w-4 h-4"

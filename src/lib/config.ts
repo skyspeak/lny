@@ -4,27 +4,27 @@
 
 export const eventConfig = {
   // Party basics
-  partyName: "Mila and Lia's 5th Birthday Celebration",
-  childName: "Mila & Lia",
-  childAge: 5,
-  tagline: "A Cat / Mermaid / Unicorn / Dog Celebration\n(we couldn't agree on a theme)",
+  partyName: "马年新春庆典 Year of the Horse Celebration",
+  childName: "恭喜发财",
+  childAge: 2026,
+  tagline: "奔腾万里 • 马到成功 • 万马奔腾\nGalloping into Prosperity • Success Arrives with the Horse",
 
   // Date & time
-  date: "Sunday, March 22, 2026",
-  time: "1:00 PM – 3:00 PM",
+  date: "Saturday, January 29, 2026",
+  time: "6:00 PM – 10:00 PM",
 
   // Location
-  venueName: "La Petite Playhouse",
-  address: "1264 Oddstad Dr, Redwood City, CA 94063",
-  mapUrl: "https://maps.google.com/?q=1264+Oddstad+Dr+Redwood+City+CA+94063",
+  venueName: "Golden Dragon Pavilion",
+  address: "888 Fortune Way, San Francisco, CA 94102",
+  mapUrl: "https://maps.google.com/?q=888+Fortune+Way+San+Francisco+CA+94102",
 
   // Theme description
   themeDescription:
-    "Join us for a magical celebration where cats, mermaids, unicorns, and dogs party together! An enchanted afternoon awaits with shimmering decorations, whimsical activities, and delicious treats. Come dressed as your favorite creature and bring your imagination!",
+    "Join us for an auspicious Lunar New Year celebration honoring the Year of the Horse! Experience the spirit of 马年 with traditional lion dances, red lanterns, and the thundering hooves of prosperity. Gallop into the new year with fortune, success, and boundless energy. 新年快乐！",
 
   // Additional info
   additionalInfo:
-    "Light snacks and cake will be served. Please let us know about any allergies in the message field when you RSVP.",
+    "Traditional Chinese banquet will be served. Red attire encouraged for good fortune! Hongbao (red envelopes) and well wishes appreciated. Please inform us of any dietary restrictions.",
 
   // Photos for the carousel
   // Your custom photos from public/photos/

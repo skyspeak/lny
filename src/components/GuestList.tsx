@@ -33,9 +33,9 @@ export default function GuestList() {
   const totalAdults = going.reduce((sum, i) => sum + i.adultsCount, 0);
   const totalKids = going.reduce((sum, i) => sum + i.kidsCount, 0);
 
-  // Random emoji selector
+  // Random emoji selector - Year of the Horse theme
   const getRandomEmoji = (id: number) => {
-    const emojis = ['🐱', '🐶', '🧜‍♀️', '🦄'];
+    const emojis = ['🐴', '🐎', '🏇', '🎠'];
     // Use guest ID as seed for consistency across renders
     return emojis[id % emojis.length];
   };
@@ -43,7 +43,7 @@ export default function GuestList() {
   if (loading) {
     return (
       <div className="w-full max-w-2xl mx-auto text-center py-12">
-        <div className="inline-block w-8 h-8 border-2 border-lavender/30 border-t-lavender rounded-full animate-spin" />
+        <div className="inline-block w-8 h-8 border-2 border-imperial-red/30 border-t-imperial-red rounded-full animate-spin" />
       </div>
     );
   }
@@ -59,10 +59,10 @@ export default function GuestList() {
       {going.length > 0 && (
         <div className="text-center mb-6 md:mb-8">
           <p className="text-charcoal/70 text-base md:text-lg leading-relaxed px-4">
-            <span className="font-semibold text-lavender">{totalAdults}</span>{" "}
+            <span className="font-semibold text-imperial-red">{totalAdults}</span>{" "}
             {totalAdults === 1 ? "adult" : "adults"} and{" "}
-            <span className="font-semibold text-seafoam">{totalKids}</span>{" "}
-            {totalKids === 1 ? "kid" : "kids"} are joining the magic!
+            <span className="font-semibold text-golden">{totalKids}</span>{" "}
+            {totalKids === 1 ? "kid" : "kids"} are joining the celebration! 🐴
           </p>
         </div>
       )}
@@ -77,7 +77,7 @@ export default function GuestList() {
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="bg-white/70 backdrop-blur-sm rounded-xl md:rounded-2xl px-4 md:px-6 py-3 md:py-4 shadow-soft border border-seafoam/15"
+                className="bg-white/70 backdrop-blur-sm rounded-xl md:rounded-2xl px-4 md:px-6 py-3 md:py-4 shadow-soft border border-imperial-red/15"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex-1">
@@ -103,7 +103,7 @@ export default function GuestList() {
                 
                 {/* Message with sparkles */}
                 {invitee.message && (
-                  <div className="mt-3 pt-3 border-t border-seafoam/10 relative">
+                  <div className="mt-3 pt-3 border-t border-golden/10 relative">
                     {/* Sparkle particles */}
                     {[...Array(5)].map((_, i) => (
                       <motion.span
@@ -141,10 +141,10 @@ export default function GuestList() {
       ) : (
         <div className="text-center py-8 px-4 mb-6">
           <div className="text-5xl md:text-6xl mb-4 animate-float">
-            🦄✨
+            🐴🏮
           </div>
           <p className="text-charcoal/60 text-base md:text-lg font-serif italic">
-            The magical guest list awaits its first enchanted name...
+            The celebration awaits its first auspicious guest...
           </p>
         </div>
       )}
@@ -154,18 +154,18 @@ export default function GuestList() {
         <div className="mt-6">
           <button
             onClick={() => setShowPending(!showPending)}
-            className="w-full text-left px-4 py-3 rounded-xl bg-white/40 backdrop-blur-sm border border-gold/20 hover:bg-gold/5 transition-colors flex items-center justify-between group"
+            className="w-full text-left px-4 py-3 rounded-xl bg-white/40 backdrop-blur-sm border border-lucky-gold/20 hover:bg-lucky-gold/5 transition-colors flex items-center justify-between group"
           >
             <div className="flex items-center gap-2">
-              <span className="inline-block w-2 h-2 rounded-full bg-gold" />
-              <span className="text-xs md:text-sm font-semibold uppercase tracking-wider text-gold">
-                Awaiting Reply ({pending.length})
+              <span className="inline-block w-2 h-2 rounded-full bg-lucky-gold" />
+              <span className="text-xs md:text-sm font-semibold uppercase tracking-wider text-lucky-gold">
+                等待回复 Awaiting Reply ({pending.length})
               </span>
             </div>
             <motion.svg
               animate={{ rotate: showPending ? 180 : 0 }}
               transition={{ duration: 0.3 }}
-              className="w-5 h-5 text-gold/60"
+              className="w-5 h-5 text-lucky-gold/60"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -195,12 +195,12 @@ export default function GuestList() {
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.05 }}
-                  className="bg-white/30 backdrop-blur-sm rounded-xl md:rounded-2xl px-4 md:px-6 py-3 md:py-4 border border-gold/10 flex items-center justify-between"
+                  className="bg-white/30 backdrop-blur-sm rounded-xl md:rounded-2xl px-4 md:px-6 py-3 md:py-4 border border-lucky-gold/10 flex items-center justify-between"
                 >
                   <p className="text-charcoal/60 text-sm md:text-base break-words">
                     {invitee.name}
                   </p>
-                  <span className="text-xs text-gold/80 font-medium flex-shrink-0">
+                  <span className="text-xs text-lucky-gold/80 font-medium flex-shrink-0">
                     Pending
                   </span>
                 </motion.div>
