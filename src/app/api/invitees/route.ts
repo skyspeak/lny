@@ -1,8 +1,9 @@
-import { prisma } from "@/lib/prisma";
+import { prisma, ensureSchema } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
+    await ensureSchema();
     const invitees = await prisma.invitee.findMany({
       orderBy: { createdAt: "asc" },
       select: {
@@ -28,6 +29,7 @@ export async function GET() {
 
 export async function DELETE(request: Request) {
   try {
+    await ensureSchema();
     const { id } = await request.json();
 
     if (!id || typeof id !== "number") {

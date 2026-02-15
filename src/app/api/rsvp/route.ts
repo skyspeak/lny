@@ -1,8 +1,9 @@
-import { prisma } from "@/lib/prisma";
+import { prisma, ensureSchema } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
+    await ensureSchema();
     const body = await request.json();
     const { name, isAttending, adultsCount, kidsCount, message } = body;
 
