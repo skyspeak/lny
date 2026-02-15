@@ -51,16 +51,14 @@ export default function Carousel({ photos }: CarouselProps) {
           {photos.map((photo, index) => (
             <div
               key={index}
-              className="flex-[0_0_100%] min-w-0 relative aspect-[16/9] md:aspect-[21/9]"
+              className="flex-[0_0_100%] min-w-0 relative aspect-[16/9] md:aspect-[21/9] bg-charcoal/5"
             >
               <img
                 src={photo}
-                alt={`Party photo ${index + 1}`}
-                className="w-full h-full object-cover"
+                alt={`Celebration photo ${index + 1}`}
+                className="w-full h-full object-contain"
                 loading={index === 0 ? "eager" : "lazy"}
               />
-              {/* Soft overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-lavender/20 to-transparent pointer-events-none" />
             </div>
           ))}
         </div>
@@ -74,8 +72,8 @@ export default function Carousel({ photos }: CarouselProps) {
             onClick={() => scrollTo(index)}
             className={`w-2 h-2 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 touch-manipulation ${
               index === selectedIndex
-                ? "bg-lavender scale-125"
-                : "bg-lavender/30 hover:bg-lavender/50"
+                ? "bg-imperial-red scale-125"
+                : "bg-imperial-red/30 hover:bg-imperial-red/50"
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />
