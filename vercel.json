@@ -1,0 +1,5 @@
+{
+  "name": "lny-gold",
+  "buildCommand": "prisma generate && next build",
+  "installCommand": "npm install"
+}
