@@ -30,9 +30,7 @@ export const eventConfig = {
   // Your custom photos from public/photos/
   photos: [
     "/photos/photo-1.png",
-    "/photos/photo-2.png",
-    "/photos/photo-3.png",
-    "/photos/photo-4.png",
-    "/photos/photo-5.png",
+    "/photos/photo-2.jpg",
+    "/photos/photo-3.jpeg",
   ],
 };
