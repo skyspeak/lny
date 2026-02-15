@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { eventConfig } from "@/lib/config";
 import Carousel from "@/components/Carousel";
 import EventDetails from "@/components/EventDetails";
-import GuestList from "@/components/GuestList";
 import WaveDivider from "@/components/WaveDivider";
 
 export default function HomePage() {
@@ -81,21 +80,6 @@ export default function HomePage() {
           活动详情 Event Details
         </motion.h2>
         <EventDetails />
-      </section>
-
-      <WaveDivider flip />
-
-      {/* Guest List */}
-      <section className="py-10 md:py-12 px-4 pb-16">
-        <motion.h2
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="font-serif text-3xl md:text-4xl text-imperial-red text-center mb-6 md:mb-8"
-        >
-          来宾名单 Guest List
-        </motion.h2>
-        <GuestList />
       </section>
 
       {/* Footer */}

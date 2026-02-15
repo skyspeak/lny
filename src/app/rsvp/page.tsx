@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
 import { eventConfig } from "@/lib/config";
 import Carousel from "@/components/Carousel";
 import WaveDivider from "@/components/WaveDivider";
@@ -12,46 +11,19 @@ import AddToCalendar from "@/components/AddToCalendar";
 import confetti from "canvas-confetti";
 
 function RSVPContent() {
-  const searchParams = useSearchParams();
   const [showContent, setShowContent] = useState(false);
   const [guestName, setGuestName] = useState("");
   const [isAttending, setIsAttending] = useState<boolean | null>(null);
   const [adultsCount, setAdultsCount] = useState(1);
   const [kidsCount, setKidsCount] = useState(0);
-  const [maxKidsCount, setMaxKidsCount] = useState<number | null>(null);
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
-  // Read URL parameters and fetch invitee data on component mount
-  useEffect(() => {
-    const name = searchParams.get("name");
-    
-    if (name) {
-      const decodedName = decodeURIComponent(name);
-      setGuestName(decodedName);
-      
-      // Fetch invitee data from database
-      fetch(`/api/invitees/${encodeURIComponent(decodedName)}`)
-        .then(res => {
-          if (res.ok) {
-            return res.json();
-          }
-          // If invitee doesn't exist yet, that's okay - they can still RSVP
-          return null;
-        })
-        .then(data => {
-          if (data && data.maxKidsCount !== null && data.maxKidsCount !== undefined) {
-            setMaxKidsCount(data.maxKidsCount);
-            setKidsCount(data.maxKidsCount); // Start at max allowed
-          }
-        })
-        .catch(err => {
-          console.error("Failed to fetch invitee data:", err);
-        });
-    }
-  }, [searchParams]);
+  // Max counts for adults and children
+  const MAX_ADULTS = 2;
+  const MAX_KIDS = 2;
 
   // Trigger confetti when confirmation page shows
   useEffect(() => {
@@ -288,10 +260,7 @@ function RSVPContent() {
                     value={guestName}
                     onChange={(e) => setGuestName(e.target.value)}
                     placeholder="Enter your name"
-                    readOnly={!!searchParams.get("name")}
-                    className={`w-full rounded-2xl border border-imperial-red/20 bg-white/50 px-4 py-3 text-sm md:text-base text-charcoal placeholder:text-charcoal/30 focus:outline-none focus:ring-2 focus:ring-imperial-red/30 focus:border-imperial-red/40 transition-all touch-manipulation ${
-                      searchParams.get("name") ? "cursor-not-allowed opacity-70" : ""
-                    }`}
+                    className="w-full rounded-2xl border border-imperial-red/20 bg-white/50 px-4 py-3 text-sm md:text-base text-charcoal placeholder:text-charcoal/30 focus:outline-none focus:ring-2 focus:ring-imperial-red/30 focus:border-imperial-red/40 transition-all touch-manipulation"
                   />
                 </div>
 
@@ -346,8 +315,13 @@ function RSVPContent() {
                             {adultsCount}
                           </span>
                           <button
-                            onClick={() => setAdultsCount(Math.min(10, adultsCount + 1))}
-                            className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-imperial-red/10 text-imperial-red hover:bg-imperial-red/20 active:scale-90 flex items-center justify-center transition-all text-lg md:text-xl touch-manipulation"
+                            onClick={() => setAdultsCount(Math.min(MAX_ADULTS, adultsCount + 1))}
+                            disabled={adultsCount >= MAX_ADULTS}
+                            className={`w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center transition-all text-lg md:text-xl touch-manipulation ${
+                              adultsCount >= MAX_ADULTS
+                                ? "bg-gray-100 text-gray-300 cursor-not-allowed"
+                                : "bg-imperial-red/10 text-imperial-red hover:bg-imperial-red/20 active:scale-90"
+                            }`}
                           >
                             +
                           </button>
@@ -368,10 +342,10 @@ function RSVPContent() {
                             {kidsCount}
                           </span>
                           <button
-                            onClick={() => setKidsCount(Math.min(maxKidsCount ?? 2, kidsCount + 1))}
-                            disabled={(maxKidsCount !== null && kidsCount >= maxKidsCount) || (maxKidsCount === null && kidsCount >= 2)}
+                            onClick={() => setKidsCount(Math.min(MAX_KIDS, kidsCount + 1))}
+                            disabled={kidsCount >= MAX_KIDS}
                             className={`w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center transition-all text-lg md:text-xl touch-manipulation ${
-                              ((maxKidsCount !== null && kidsCount >= maxKidsCount) || (maxKidsCount === null && kidsCount >= 2))
+                              kidsCount >= MAX_KIDS
                                 ? "bg-gray-100 text-gray-300 cursor-not-allowed"
                                 : "bg-golden/10 text-lucky-gold hover:bg-golden/20 active:scale-90"
                             }`}

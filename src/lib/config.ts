@@ -20,11 +20,11 @@ export const eventConfig = {
 
   // Theme description
   themeDescription:
-    "Join us for an auspicious Lunar New Year celebration honoring the Year of the Horse! Experience the spirit of 马年 with traditional lion dances, red lanterns, and the thundering hooves of prosperity. Gallop into the new year with fortune, success, and boundless energy. 新年快乐！",
+    "Join us for an auspicious Lunar New Year celebration honoring the Year of the Horse! Gallop into the new year with fortune, success, and boundless energy. 新年快乐！",
 
   // Additional info
   additionalInfo:
-    "Traditional Chinese banquet will be served. Red attire encouraged for good fortune! Hongbao (red envelopes) and well wishes appreciated. Please inform us of any dietary restrictions.",
+    "",
 
   // Photos for the carousel
   // Your custom photos from public/photos/

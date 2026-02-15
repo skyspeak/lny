@@ -21,10 +21,13 @@ export default function GuestList() {
     fetch("/api/invitees")
       .then((res) => res.json())
       .then((data) => {
-        setInvitees(data);
+        setInvitees(Array.isArray(data) ? data : []);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch(() => {
+        setInvitees([]);
+        setLoading(false);
+      });
   }, []);
 
   const going = invitees.filter((i) => i.isAttending === true);
