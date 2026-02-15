@@ -29,7 +29,6 @@ export const eventConfig = {
   // Photos for the carousel
   // Your custom photos from public/photos/
   photos: [
-    "/photos/photo-1.png",
     "/photos/photo-2.jpg",
     "/photos/photo-3.jpeg",
   ],
