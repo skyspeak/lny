@@ -17,17 +17,27 @@ interface Invitee {
 export default function AdminPage() {
   const [invitees, setInvitees] = useState<Invitee[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [deletingId, setDeletingId] = useState<number | null>(null);
 
   useEffect(() => {
+    setError(null);
     fetch("/api/invitees")
-      .then((res) => res.json())
+      .then(async (res) => {
+        const data = await res.json();
+        if (!res.ok) {
+          const msg = [data?.message, data?.error].filter(Boolean).join(" — ") || `Request failed (${res.status})`;
+          throw new Error(msg);
+        }
+        return data;
+      })
       .then((data) => {
         setInvitees(Array.isArray(data) ? data : []);
         setLoading(false);
       })
-      .catch(() => {
+      .catch((err) => {
         setInvitees([]);
+        setError(err instanceof Error ? err.message : "Failed to load RSVPs");
         setLoading(false);
       });
   }, []);
@@ -72,6 +82,24 @@ export default function AdminPage() {
     return (
       <main className="min-h-screen flex items-center justify-center">
         <div className="inline-block w-8 h-8 border-2 border-imperial-red/30 border-t-imperial-red rounded-full animate-spin" />
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main className="min-h-screen py-8 px-4 flex items-center justify-center">
+        <div className="max-w-md w-full bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-soft border border-imperial-red/20 text-center">
+          <h1 className="font-serif text-xl font-bold text-charcoal mb-2">Could not load dashboard</h1>
+          <p className="text-charcoal/80 text-sm mb-4 break-words">{error}</p>
+          <button
+            type="button"
+            onClick={() => window.location.reload()}
+            className="px-4 py-2 bg-imperial-red text-white rounded-lg text-sm font-medium hover:opacity-90"
+          >
+            Retry
+          </button>
+        </div>
       </main>
     );
   }

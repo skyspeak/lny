@@ -19,9 +19,10 @@ export async function GET() {
 
     return NextResponse.json(invitees);
   } catch (error) {
+    const message = error instanceof Error ? error.message : "Unknown error";
     console.error("Failed to fetch invitees:", error);
     return NextResponse.json(
-      { error: "Failed to fetch invitees" },
+      { error: "Failed to fetch invitees", message },
       { status: 500 }
     );
   }

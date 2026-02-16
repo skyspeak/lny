@@ -1,22 +1,23 @@
 import { PrismaClient } from "../generated/prisma/client";
-import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
+import { PrismaPg } from "@prisma/adapter-pg";
 
 const globalForPrisma = globalThis as unknown as {
   prisma: InstanceType<typeof PrismaClient> | undefined;
 };
 
 function createPrismaClient() {
-  // DATABASE_URL: explicit (e.g. Vercel Postgres or file path)
-  // Vercel: use /tmp (only writable dir; DB is ephemeral unless you add a real DB)
-  // Local: use prisma/dev.db
-  let url = process.env.DATABASE_URL;
+  const url = process.env.DATABASE_URL;
   if (!url) {
-    const isVercel = process.env.VERCEL === "1";
-    url = isVercel
-      ? "file:/tmp/lny-rsvp.db"
-      : `file:${process.cwd()}/prisma/dev.db`;
+    if (process.env.VERCEL === "1") {
+      throw new Error(
+        "DATABASE_URL is not set. Add a persistent database (e.g. Vercel Postgres) in Project Settings → Environment Variables so RSVPs survive deployments. See DEPLOYMENT.md."
+      );
+    }
+    throw new Error(
+      "DATABASE_URL is not set. For local dev, add DATABASE_URL to .env (e.g. a Vercel Postgres connection string or local Postgres)."
+    );
   }
-  const adapter = new PrismaBetterSqlite3({ url });
+  const adapter = new PrismaPg({ connectionString: url });
   return new PrismaClient({ adapter });
 }
 
@@ -26,21 +27,21 @@ if (process.env.NODE_ENV !== "production") {
   globalForPrisma.prisma = prisma;
 }
 
-/** Ensure SQLite table exists (for ephemeral DBs like /tmp on Vercel). Call once before first use. */
+/** Ensure table exists (e.g. first deploy without migrations). Safe to call on every request. */
 let schemaEnsured: Promise<void> | null = null;
 export async function ensureSchema() {
   if (schemaEnsured) return schemaEnsured;
   schemaEnsured = (async () => {
     await prisma.$executeRawUnsafe(`
       CREATE TABLE IF NOT EXISTS "Invitee" (
-        "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        "id" SERIAL PRIMARY KEY,
         "name" TEXT NOT NULL,
         "adultsCount" INTEGER NOT NULL DEFAULT 0,
         "kidsCount" INTEGER NOT NULL DEFAULT 0,
-        "isAttending" INTEGER,
+        "isAttending" BOOLEAN,
         "message" TEXT,
-        "respondedAt" DATETIME,
-        "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        "respondedAt" TIMESTAMP(3),
+        "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP
       );
     `);
   })();
