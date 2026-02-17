@@ -166,7 +166,7 @@ lny/
 ## 🛠️ Tech Stack
 
 - **Next.js 16** (App Router) - React framework
-- **Prisma 7** + **SQLite** - Database ORM and file-based DB
+- **Prisma 7** + **Neon** (Postgres) - Database ORM and hosted Postgres
 - **Tailwind CSS 4** - Utility-first styling
 - **Framer Motion** - Smooth animations
 - **Embla Carousel** - Touch-optimized swipeable carousel
@@ -227,11 +227,13 @@ Visit the homepage at **http://localhost:3000** to see:
 - Who hasn't responded yet
 - Total adult and kid counts
 
-### Reset the Database
+### Reset / seed the database
+
+The app creates the table automatically. To add sample invitees:
 
 ```bash
-rm prisma/dev.db
-npx prisma db push
+cd birthday
+DATABASE_URL="your-neon-url" npx prisma db seed
 ```
 
 ## 🎉 Tips for Success

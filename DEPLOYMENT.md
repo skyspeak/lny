@@ -1,47 +1,28 @@
 # Deploy to Vercel (lny-gold.vercel.app)
 
-## Why the admin dashboard was empty after each deploy
+## Database: Neon only
 
-The app used to store RSVPs in a SQLite file at `/tmp/lny-rsvp.db` when `DATABASE_URL` was not set on Vercel. On Vercel, `/tmp` is **ephemeral**: it is wiped on every new deployment and can differ between serverless invocations. So:
+The app uses **Neon** (Postgres) as the only database. Set `DATABASE_URL` to your Neon connection string so RSVPs persist across deployments.
 
-- Every new deployment → new instances → empty `/tmp` → no database file → admin dashboard showed 0 RSVPs.
-- The dashboard page at `/admin` never “disappeared”; it was the **data** that was lost.
+### 1. Get your Neon connection string
 
-**Can you recover how many people had RSVP’d?** No. The app does not log RSVP counts anywhere (only `console.error` on failures). The only place that stored counts was the ephemeral SQLite file, so that number cannot be recovered from logs or the codebase.
+1. Create a database at [Neon](https://neon.tech) (or use an existing one).
+2. In the Neon dashboard, copy the connection string (use the **pooled** one for serverless, e.g. `postgresql://...@...-pooler....neon.tech/neondb?sslmode=require`).
 
-## Fix: use a persistent database
-
-The app now **requires** `DATABASE_URL` and uses **PostgreSQL** (e.g. Vercel Postgres). RSVPs are stored in that database and survive deployments.
-
-### 1. Add a database on Vercel
+### 2. Set `DATABASE_URL` on Vercel
 
 1. In the [Vercel Dashboard](https://vercel.com), open your project (**lny-gold**).
-2. Go to **Storage** → **Create Database** → choose **Postgres** (Vercel Postgres).
-3. Create the database and connect it to your project (same project that has the `birthday` app).
-4. Vercel will add env vars such as `POSTGRES_PRISMA_URL` or `POSTGRES_URL`. Use the one that works with Prisma (often the “Prisma” URL).
-
-### 2. Set `DATABASE_URL`
-
-1. In the project, go to **Settings** → **Environment Variables**.
-2. Add (or override):
-   - **Name:** `DATABASE_URL`
-   - **Value:** the Postgres connection string (e.g. the value of `POSTGRES_PRISMA_URL` or `POSTGRES_URL` from the Storage tab).
-3. Apply to **Production** (and Preview if you want RSVPs there too). Save.
+2. Go to **Settings** → **Environment Variables**.
+3. Add **`DATABASE_URL`** with your Neon connection string.
+4. Apply to **Production** (and **Preview** if you want). Save.
 
 ### 3. Redeploy
 
-Redeploy so the new env var is used (e.g. push a commit or trigger a redeploy from the Vercel dashboard). After that, RSVPs will persist and the admin dashboard will keep showing them across deployments.
+Redeploy so the env var is used (e.g. push a commit or **Deployments** → **⋯** → **Redeploy**). After that, RSVPs will persist.
 
 ### Local development
 
-You need `DATABASE_URL` in `.env` as well (same Postgres URL or a local Postgres instance), for example:
-
-```bash
-# .env (do not commit real URLs)
-DATABASE_URL="postgresql://..."   # from Vercel Postgres or your local Postgres
-```
-
-Then:
+Add `DATABASE_URL` to `birthday/.env` (your Neon connection string), then:
 
 ```bash
 cd birthday
@@ -53,41 +34,27 @@ npm run dev
 
 ## Deploy via Vercel Dashboard
 
-1. **Go to [vercel.com](https://vercel.com)** and sign in (use the same account as **skyspeak-gmailcoms-projects**).
+1. **Go to [vercel.com](https://vercel.com)** and sign in.
 
 2. **Import or open the project:**
-   - If **lny-gold** already exists: open it from your dashboard.
-   - If not: click **Add New… → Project**, then **Import** the repo **skyspeak/lny**.
+   - If **lny-gold** exists: open it.
+   - If not: **Add New… → Project** → **Import** the repo **skyspeak/lny**.
 
-3. **Configure the project:**
-   - **Root Directory:** Click **Edit** and set to **`birthday`** (the app lives in this folder).
-   - **Project Name:** Set to **lny-gold** (so the URL is **lny-gold.vercel.app**).
-   - **Framework Preset:** Next.js (auto-detected).
-   - **Build Command:** `prisma generate && next build` (or leave default; `vercel.json` sets it).
-   - **Install Command:** `npm install`.
-   - **Environment Variables:** Ensure `DATABASE_URL` is set to your Vercel Postgres (or other Postgres) URL.
+3. **Configure:**
+   - **Root Directory:** Set to **`birthday`**.
+   - **Project Name:** **lny-gold** (optional).
+   - **Environment Variables:** Set **`DATABASE_URL`** to your Neon connection string.
 
-4. **Deploy:** Click **Deploy**. Vercel will build and deploy; your site will be at **https://lny-gold.vercel.app**.
+4. **Deploy.** The site will be at **https://lny-gold.vercel.app**.
 
-5. **Later deploys:** Every push to the `main` branch on GitHub will trigger a new deployment to lny-gold.vercel.app. RSVPs will persist as long as `DATABASE_URL` points to a persistent Postgres database.
+5. **Later:** Pushes to `main` trigger new deployments. RSVPs persist as long as `DATABASE_URL` points to Neon.
 
-## Deploy via Vercel CLI (from your machine)
-
-From your machine (with Vercel CLI and login already done):
+## Deploy via Vercel CLI
 
 ```bash
 cd birthday
-vercel link --scope skyspeak-gmailcoms-projects   # pick existing project "lny-gold" when asked
+vercel link   # pick existing project "lny-gold" if asked
 vercel --prod
 ```
 
-Or deploy and create/link in one go:
-
-```bash
-cd birthday
-vercel --prod --scope skyspeak-gmailcoms-projects
-```
-
-When prompted for **Link to existing project?**, choose **lny-gold** if it already exists.
-
-The `vercel.json` in this folder sets the project name to **lny-gold** so deployments use **lny-gold.vercel.app**.
+The `vercel.json` in this folder sets the project name to **lny-gold** so the URL is **lny-gold.vercel.app**.

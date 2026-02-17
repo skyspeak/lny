@@ -10,11 +10,11 @@ function createPrismaClient() {
   if (!url) {
     if (process.env.VERCEL === "1") {
       throw new Error(
-        "DATABASE_URL is not set. Add a persistent database (e.g. Vercel Postgres) in Project Settings → Environment Variables so RSVPs survive deployments. See DEPLOYMENT.md."
+        "DATABASE_URL is not set. Set it to your Neon (or Postgres) connection string in Project Settings → Environment Variables. See DEPLOYMENT.md."
       );
     }
     throw new Error(
-      "DATABASE_URL is not set. For local dev, add DATABASE_URL to .env (e.g. a Vercel Postgres connection string or local Postgres)."
+      "DATABASE_URL is not set. For local dev, add DATABASE_URL to .env (e.g. your Neon connection string)."
     );
   }
   const adapter = new PrismaPg({ connectionString: url });

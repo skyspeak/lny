@@ -11,7 +11,7 @@ export const eventConfig = {
 
   // Date & time
   date: "Saturday, February 21, 2026",
-  time: "3:00 PM – 8:00 PM",
+  time: "4:00 PM – 8:00 PM",
 
   // Location
   venueName: "1768 Monticello Rd",
