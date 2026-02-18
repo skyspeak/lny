@@ -10,7 +10,7 @@ export const eventConfig = {
   tagline: "奔腾万里 • 马到成功 • 万马奔腾\nGalloping into Prosperity • Success Arrives with the Horse",
 
   // Date & time
-  date: "Saturday, February 21, 2026",
+  date: "Saturday, February 28, 2026",
   time: "4:00 PM – 8:00 PM",
 
   // Location
